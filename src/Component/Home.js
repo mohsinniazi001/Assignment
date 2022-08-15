@@ -3,7 +3,7 @@ import { signOut, onAuthStateChanged } from "firebase/auth"
 import { auth, db } from "../Firebase/FirebaseConfig"
 import { useNavigate } from "react-router-dom";
 import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../Firebase/FirebaseConfig'
+
 export default function Home() {
     let navigate = useNavigate();
     const [lemail, setlemail] = useState({});
@@ -21,7 +21,7 @@ export default function Home() {
     }
     const createTodo = async (e) => {
         e.preventDefault(e);
-        if (input == '') {
+        if (input === '') {
             alert('Please enter a valid todo');
             return;
         }
@@ -33,7 +33,7 @@ export default function Home() {
 
     return (
         <div>
-            <form>
+            <form onSubmit={createTodo}>
                 <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
